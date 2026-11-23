@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marxen Fitness</title>
+<meta name="description" content="Online strength and nutrition coaching for busy professionals. Three lifting sessions a week, simple nutrition targets and a weekly check-in.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: one dark world. Heavy uppercase sans headlines, each finished by an italic serif
+   phrase in the accent blue; numbered method rows alternate text with small example panels. */
+:root {
+  --bg: #090E19;
+  --bg2: #0E1524;
+  --line: #1E2A40;
+  --ink: #F3F1EA;
+  --muted: #9AA4B7;
+  --dim: #66728A;
+  --accent: #4F8DFF;
+  --on-accent: #07101F;
+  --sans: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 1.0625rem; line-height: 1.6; }
+h1, h2, h3, p, ul, ol, dl, dd { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+[hidden] { display: none !important; }
+.wrap { max-width: 1180px; margin-inline: auto; padding-inline: clamp(18px, 4.5vw, 56px); }
+.it { font-family: var(--serif); font-style: italic; font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--accent); }
+.tag { display: flex; align-items: center; gap: 14px; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); }
+.tag::before { content: ""; width: 36px; height: 1px; background: currentColor; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; background: var(--accent); color: var(--on-accent); font-weight: 800; font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; padding: 1.15em 1.9em; white-space: nowrap; }
+.btn:hover { background: #73A5FF; }
+.btn-sm { padding: 0.95em 1.3em; font-size: 0.72rem; }
+.link { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; padding-bottom: 6px; border-bottom: 1px solid var(--accent); }
+
+.head { position: sticky; top: 0; z-index: 5; background: rgba(9, 14, 25, 0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.head .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
+.mark { font-weight: 500; font-size: 1.05rem; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; }
+.nav { display: flex; gap: 34px; }
+.nav a { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; text-decoration: none; color: var(--muted); }
+.nav a:hover { color: var(--ink); }
+
+.hero { background: linear-gradient(118deg, transparent 0 56%, rgba(79, 141, 255, 0.09) 56% 69%, transparent 69% 76%, rgba(79, 141, 255, 0.05) 76% 85%, transparent 85%), var(--bg); border-bottom: 1px solid var(--line); }
+.hero .wrap { padding-block: clamp(48px, 9vw, 120px) clamp(44px, 7vw, 88px); display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 40px; align-items: end; }
+.hero h1 { margin-top: 26px; font-weight: 800; font-size: clamp(2.8rem, 10vw, 7.2rem); line-height: 0.92; letter-spacing: -0.02em; text-transform: uppercase; }
+.hero h1 .it { display: block; font-size: 1.06em; line-height: 1; padding-top: 0.06em; }
+.lede { margin-top: 30px; max-width: 31em; color: var(--muted); font-size: 1.12rem; }
+.lede strong { color: var(--ink); font-weight: 700; }
+.actions { margin-top: 34px; display: flex; flex-wrap: wrap; align-items: center; gap: 22px 30px; }
+.quick { display: grid; gap: 10px; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); text-align: right; }
+.quick b { color: var(--ink); font-weight: 800; }
+
+.facts .wrap { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.facts .wrap > div { padding: clamp(26px, 4vw, 44px) clamp(14px, 2.4vw, 34px); border-left: 1px solid var(--line); }
+.facts .wrap > div:first-child { border-left: 0; padding-left: 0; }
+.facts b { display: block; font-weight: 800; font-size: clamp(2.4rem, 5.6vw, 4rem); line-height: 1; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.facts b i { font-style: normal; color: var(--accent); }
+.facts span { display: block; margin-top: 12px; color: var(--muted); font-size: 0.95rem; max-width: 15em; }
+
+.strip { border-block: 1px solid var(--line); }
+.strip ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 26px; padding: 22px clamp(18px, 4.5vw, 56px); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); }
+.strip li { display: flex; align-items: center; gap: 26px; }
+.strip li + li::before { content: ""; width: 6px; height: 6px; background: var(--accent); transform: rotate(45deg); }
+
+.sec { padding-block: clamp(64px, 10vw, 132px); }
+.sec + .sec { border-top: 1px solid var(--line); }
+.sec h2 { margin-top: 20px; font-weight: 800; font-size: clamp(2.2rem, 6.4vw, 4.4rem); line-height: 0.98; letter-spacing: -0.02em; text-transform: uppercase; }
+.sec h2 .it { font-size: 1.08em; }
+.intro { margin-top: 20px; max-width: 34em; color: var(--muted); }
+
+.premise .wrap { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); gap: 28px 40px; align-items: start; }
+.premise .say { font-family: var(--serif); font-style: italic; font-size: clamp(1.7rem, 4.2vw, 3.1rem); line-height: 1.18; }
+.premise .say span { color: var(--accent); }
+
+.rows { margin-top: clamp(36px, 6vw, 72px); }
+.row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 6vw, 90px); align-items: center; padding-block: clamp(36px, 6vw, 72px); border-top: 1px solid var(--line); }
+.row:nth-child(even) .row-text { order: 2; }
+.row-text { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 6px clamp(18px, 3vw, 40px); }
+.num { font-family: var(--serif); font-style: italic; font-size: clamp(2.2rem, 4vw, 3.2rem); line-height: 1; color: var(--accent); grid-row: span 3; }
+.kicker { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--dim); }
+.row h3 { font-weight: 800; font-size: clamp(1.6rem, 3.6vw, 2.5rem); line-height: 1.02; letter-spacing: -0.01em; text-transform: uppercase; }
+.row-text p { margin-top: 10px; color: var(--muted); max-width: 30em; }
+.row-text p strong { color: var(--ink); }
+
+.panel { background: var(--bg2); border: 1px solid var(--line); padding: clamp(18px, 3vw, 30px); }
+.panel-title { display: flex; justify-content: space-between; gap: 12px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); }
+.week { margin-top: 16px; display: grid; gap: 12px; }
+.week li { display: grid; grid-template-columns: 3.4ch minmax(0, 1fr) auto; column-gap: 12px; row-gap: 6px; align-items: baseline; font-size: 0.98rem; }
+.week .d { font-weight: 800; }
+.week .m { color: var(--muted); font-size: 0.9rem; font-variant-numeric: tabular-nums; }
+.week .t { grid-column: 1 / -1; height: 5px; background: var(--line); }
+.week .t i { display: block; height: 100%; width: var(--w, 0%); background: var(--dim); }
+.week .lift .t i { background: var(--accent); }
+.total { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 12px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.kv { margin-top: 8px; }
+.kv div { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding-block: 14px; border-bottom: 1px solid var(--line); }
+.kv dt { color: var(--muted); }
+.kv dd { font-weight: 800; font-size: 1.25rem; font-variant-numeric: tabular-nums; text-align: right; }
+.note { margin-top: 14px; color: var(--dim); font-size: 0.88rem; }
+.msgs { margin-top: 16px; display: grid; gap: 12px; }
+.msg { max-width: 88%; padding: 12px 14px; font-size: 0.96rem; line-height: 1.45; border: 1px solid var(--line); }
+.msg small { display: block; margin-bottom: 4px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); }
+.msg.coach { justify-self: end; background: rgba(79, 141, 255, 0.12); border-color: rgba(79, 141, 255, 0.4); }
+
+.fit { margin-top: clamp(30px, 5vw, 56px); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px clamp(32px, 6vw, 80px); }
+.fit h3 { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+.fit .no h3 { color: var(--muted); border-color: var(--dim); }
+.fit li { padding-block: 15px; border-bottom: 1px solid var(--line); }
+.fit .no li { color: var(--muted); }
+
+.price .wrap { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 36px clamp(32px, 6vw, 90px); align-items: end; }
+.amount { margin-top: 22px; font-weight: 800; font-size: clamp(4.6rem, 15vw, 10rem); line-height: 0.86; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
+.amount .it { font-size: 0.3em; letter-spacing: 0; }
+.incl li { padding-block: 14px; border-bottom: 1px solid var(--line); display: flex; gap: 14px; }
+.incl li::before { content: ""; flex: none; width: 7px; height: 7px; margin-top: 0.62em; background: var(--accent); transform: rotate(45deg); }
+.incl + .btn { margin-top: 28px; }
+
+.coach p { margin-top: 24px; max-width: 36em; font-size: 1.15rem; color: var(--muted); }
+.coach p strong { color: var(--ink); }
+
+.faq { margin-top: clamp(28px, 4vw, 48px); border-top: 1px solid var(--line); }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; list-style: none; padding-block: 22px; font-weight: 700; font-size: 1.12rem; display: flex; justify-content: space-between; gap: 18px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; color: var(--accent); font-weight: 500; font-size: 1.4rem; line-height: 1; }
+.faq details[open] summary::after { content: "−"; }
+.faq details p { padding-bottom: 24px; max-width: 40em; color: var(--muted); }
+
+.book { background: var(--accent); color: var(--on-accent); }
+.book .wrap { padding-block: clamp(60px, 9vw, 120px); }
+.book h2 { font-weight: 800; font-size: clamp(2.6rem, 8.4vw, 6rem); line-height: 0.94; letter-spacing: -0.02em; text-transform: uppercase; }
+.book h2 .it { color: var(--on-accent); font-size: 1.06em; }
+.book p { margin-top: 20px; max-width: 30em; font-size: 1.15rem; font-weight: 500; }
+.book .btn { margin-top: 30px; background: var(--on-accent); color: var(--ink); }
+.book .btn:hover { background: #12203A; }
+.soon { display: inline-block; margin-top: 30px; padding: 1.05em 1.6em; border: 1px solid var(--on-accent); font-weight: 800; font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; }
+
+.foot { padding-block: 34px 48px; color: var(--dim); font-size: 0.9rem; }
+.foot p { max-width: 58em; }
+.foot p + p { margin-top: 8px; }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+@media (max-width: 900px) {
+  .nav { display: none; }
+  .hero .wrap { grid-template-columns: minmax(0, 1fr); }
+  .quick { text-align: left; grid-auto-flow: column; justify-content: start; gap: 22px; }
+  .facts .wrap { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .facts .wrap > div:nth-child(odd) { border-left: 0; padding-left: 0; }
+  .facts .wrap > div:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .premise .wrap, .row, .price .wrap { grid-template-columns: minmax(0, 1fr); }
+  .row:nth-child(even) .row-text { order: 0; }
+}
+@media (max-width: 560px) {
+  .fit { grid-template-columns: minmax(0, 1fr); }
+  .quick { grid-auto-flow: row; gap: 8px; }
+  .mark { font-size: 0.92rem; letter-spacing: 0.16em; }
+  .strip ul { flex-direction: column; gap: 10px; }
+  .strip li { gap: 14px; }
+  .strip li::before { content: ""; width: 6px; height: 6px; background: var(--accent); transform: rotate(45deg); }
+}
+</style>
+</head>
+<body>
+
+<header class="head">
+  <div class="wrap">
+    <a class="mark" href="#top">Marxen Fitness</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#method">The method</a>
+      <a href="#fit">Who it's for</a>
+      <a href="#price">Price</a>
+    </nav>
+    <a class="btn btn-sm" href="#book" data-book>Book a free call</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="tag">Online coaching for busy professionals</p>
+        <h1>Strength and fat loss <span class="it">on your schedule.</span></h1>
+        <p class="lede">Three lifting sessions a week, nutrition targets you can hit on a workday, and a check-in with your coach every week. <strong>No two-hour workouts. No rigid meal plans.</strong> All of it planned around your job.</p>
+        <div class="actions">
+          <a class="btn" href="#book" data-book>Book a free call</a>
+          <a class="link" href="#method">See the method</a>
+        </div>
+      </div>
+      <ul class="quick">
+        <li><b>3</b> lifts a week</li>
+        <li><b>1</b> check-in a week</li>
+        <li><b>100%</b> online</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="facts" aria-label="The program in numbers">
+    <div class="wrap">
+      <div><b>3<i>x</i></b><span>Lifting sessions a week, sized to the time you have.</span></div>
+      <div><b>3:40</b><span>Hours of training and check-in in the example week below.</span></div>
+      <div><b>1<i>:</i>1</b><span>Your own coach reviews your week and adjusts the plan.</span></div>
+      <div><b><i>$</i>250</b><span>A month, billed month to month.</span></div>
+    </div>
+  </section>
+
+  <div class="strip">
+    <ul>
+      <li>The first call is free</li>
+      <li>Gym, home or hotel</li>
+      <li>Built from foods you already eat</li>
+      <li>Month to month</li>
+    </ul>
+  </div>
+
+  <section class="sec premise">
+    <div class="wrap">
+      <p class="tag">The premise</p>
+      <p class="say">Most plans assume a life you don't have: two free hours a day and a fridge full of prepped meals. This one <span>starts from your calendar</span> and builds the training and the eating around it.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="method">
+    <div class="wrap">
+      <p class="tag">The method</p>
+      <h2>What you get, <span class="it">every week.</span></h2>
+      <div class="rows">
+
+        <div class="row">
+          <div class="row-text">
+            <span class="num">01</span>
+            <span class="kicker">Training</span>
+            <h3>A program built for your week</h3>
+            <p>Sessions sized to the time you have and the equipment you can reach, at a gym, at home or in a hotel. <strong>The program changes as you get stronger.</strong></p>
+          </div>
+          <div class="panel">
+            <p class="panel-title"><span>An example week</span><span>Sample</span></p>
+            <ol class="week">
+              <li class="lift"><span class="d">Mon</span><span>Lift A: squat, press, row</span><span class="m">50 min</span><span class="t"><i style="--w:100%"></i></span></li>
+              <li><span class="d">Tue</span><span>Walk</span><span class="m">30 min</span><span class="t"><i style="--w:60%"></i></span></li>
+              <li class="lift"><span class="d">Wed</span><span>Lift B: deadlift, bench, pull-ups</span><span class="m">50 min</span><span class="t"><i style="--w:100%"></i></span></li>
+              <li><span class="d">Thu</span><span>Walk</span><span class="m">30 min</span><span class="t"><i style="--w:60%"></i></span></li>
+              <li class="lift"><span class="d">Fri</span><span>Lift C: split squat, overhead press, carries</span><span class="m">50 min</span><span class="t"><i style="--w:100%"></i></span></li>
+              <li><span class="d">Sat</span><span>Rest, or a sport you enjoy</span><span class="m">0 min</span><span class="t"><i style="--w:0%"></i></span></li>
+              <li><span class="d">Sun</span><span>Weekly check-in</span><span class="m">10 min</span><span class="t"><i style="--w:20%"></i></span></li>
+            </ol>
+            <p class="total"><span>Total for the week</span><span>3 hr 40 min</span></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row-text">
+            <span class="num">02</span>
+            <span class="kicker">Nutrition</span>
+            <h3>Targets, without a rigid meal plan</h3>
+            <p>Calorie and protein targets built from foods you already eat, with a plan for restaurants, travel and long days. <strong>Easier to keep up than a fixed menu.</strong></p>
+          </div>
+          <div class="panel">
+            <p class="panel-title"><span>Daily targets</span><span>Example</span></p>
+            <dl class="kv">
+              <div><dt>Calories</dt><dd>2,300</dd></div>
+              <div><dt>Protein</dt><dd>170 g</dd></div>
+              <div><dt>Steps</dt><dd>8,000</dd></div>
+            </dl>
+            <p class="note">Example numbers. Yours are set from your intake and adjusted as you go.</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row-text">
+            <span class="num">03</span>
+            <span class="kicker">Accountability</span>
+            <h3>A check-in every week</h3>
+            <p>Once a week you send your numbers and notes. Your coach reviews them and <strong>adjusts training and nutrition for the week ahead.</strong></p>
+          </div>
+          <div class="panel">
+            <p class="panel-title"><span>Sunday check-in</span><span>Example</span></p>
+            <dl class="kv">
+              <div><dt>Sessions done</dt><dd>3 of 3</dd></div>
+              <div><dt>Protein target hit</dt><dd>6 of 7 days</dd></div>
+              <div><dt>Sleep</dt><dd>4 of 5</dd></div>
+            </dl>
+            <p class="note">Coach's change for next week: add 5 lb to the squat and move Friday's lift to Saturday for travel.</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row-text">
+            <span class="num">04</span>
+            <span class="kicker">Coaching</span>
+            <h3>Feedback between check-ins</h3>
+            <p>Send a video of a lift and get specific cues back. Questions come up on a Tuesday, not only on check-in day, so <strong>message your coach when they do.</strong></p>
+          </div>
+          <div class="panel">
+            <p class="panel-title"><span>Messages</span><span>Example</span></p>
+            <div class="msgs">
+              <p class="msg"><small>Client</small>Squat video from today. The last rep felt off.</p>
+              <p class="msg coach"><small>Coach</small>Depth looks good. Your knees drift in on rep five. Push them out over your toes and slow the way down.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="fit">
+    <div class="wrap">
+      <p class="tag">The fit</p>
+      <h2>Who this <span class="it">is for.</span></h2>
+      <div class="fit">
+        <div>
+          <h3>A good fit</h3>
+          <ul>
+            <li>You work full time and your calendar is rarely your own.</li>
+            <li>You are roughly 30 to 50 and want to be leaner and stronger than you are now.</li>
+            <li>You have tried programs that assumed two free hours a day.</li>
+            <li>You want someone checking your work every week.</li>
+          </ul>
+        </div>
+        <div class="no">
+          <h3>Not a fit</h3>
+          <ul>
+            <li>You want a crash diet or a 30-day transformation.</li>
+            <li>You need treatment for an injury or a medical condition. See your doctor or physical therapist first.</li>
+            <li>You want in-person sessions.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec price" id="price">
+    <div class="wrap">
+      <div>
+        <p class="tag">Price</p>
+        <p class="amount">$250 <span class="it">a month</span></p>
+        <p class="intro">One plan, billed month to month. The first call is free.</p>
+      </div>
+      <div>
+        <ul class="incl">
+          <li>Training program built around your schedule and equipment</li>
+          <li>Calorie and protein targets built from foods you already eat</li>
+          <li>A check-in every week, with changes for the week ahead</li>
+          <li>Feedback on your lift videos</li>
+          <li>Messaging between check-ins</li>
+        </ul>
+        <a class="btn" href="#book" data-book>Book a free call</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec coach" id="coach">
+    <div class="wrap">
+      <p class="tag">Your coach</p>
+      <h2>Coached by <span class="it">Lance Marxen.</span></h2>
+      <p>Lance coaches the way he trains: <strong>strength work you can recover from, eating you can keep up,</strong> and a weekly review that catches small problems early.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="questions">
+    <div class="wrap">
+      <p class="tag">Questions</p>
+      <h2>Before you <span class="it">book.</span></h2>
+      <div class="faq">
+        <details>
+          <summary>Do I need a gym membership?</summary>
+          <p>No. A gym gives you the most options, but a home setup with dumbbells or a barbell works, and so does a hotel gym when you travel. Your program is written for the equipment you have.</p>
+        </details>
+        <details>
+          <summary>How much time does it take?</summary>
+          <p>Most plans run three to four hours a week, including walks and the weekly check-in. If you have less time, the plan is built for less.</p>
+        </details>
+        <details>
+          <summary>I travel for work. Will this still work?</summary>
+          <p>Yes. Tell your coach your travel days and you get hotel-gym or no-equipment sessions, plus a plan for eating on the road.</p>
+        </details>
+        <details>
+          <summary>Will I get a meal plan?</summary>
+          <p>You get calorie and protein targets and a simple structure built from foods you already eat. That is easier to keep up than a fixed menu.</p>
+        </details>
+        <details>
+          <summary>I have not lifted in years. Is that a problem?</summary>
+          <p>No. The first weeks start light and build from where you are.</p>
+        </details>
+        <details>
+          <summary>Is this medical advice?</summary>
+          <p>No. Marxen Fitness provides general fitness and nutrition coaching. It does not diagnose or treat medical conditions, and it is not a substitute for care from a doctor or a licensed dietitian. If you have a medical condition, check with your doctor before you start.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="book" id="book">
+    <div class="wrap">
+      <h2>Book a <span class="it">free call.</span></h2>
+      <p>Fifteen minutes to talk through your schedule and goals and see whether coaching fits.</p>
+      <a class="btn" id="book-link" href="#book" target="_blank" rel="noopener" hidden>Book a free call</a>
+      <span class="soon" id="book-soon">Online booking opens soon</span>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p>&copy; 2026 Marxen Fitness.</p>
+    <p>Marxen Fitness provides general fitness and nutrition coaching. It is not medical advice. Lance Marxen is not a licensed dietitian or nutritionist. Panels marked example or sample are illustrations, not client results.</p>
+  </div>
+</footer>
+
+<script>
+  // Paste the scheduling link between the quotes (for example a Calendly link).
+  // While it is empty, every "Book a free call" button scrolls to the booking section,
+  // which says that online booking opens soon.
+  var BOOKING_URL = "";
+
+  (function () {
+    if (!BOOKING_URL) return;
+    var link = document.getElementById("book-link");
+    link.href = BOOKING_URL;
+    link.hidden = false;
+    document.getElementById("book-soon").hidden = true;
+    var buttons = document.querySelectorAll("[data-book]");
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].href = BOOKING_URL;
+      buttons[i].target = "_blank";
+      buttons[i].rel = "noopener";
+    }
+  })();
+</script>
+</body>
+</html>
