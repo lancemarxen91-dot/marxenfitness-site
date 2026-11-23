@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Marxen Fitness</title>
-<meta name="description" content="Online strength and nutrition coaching for busy professionals. Three lifting sessions a week, simple nutrition targets and a weekly check-in.">
+<title>Marxen Fitness | Personal Training in Miami-Dade and Online</title>
+<meta name="description" content="Personal training for busy professionals. In-person sessions at your home or building gym anywhere in Miami-Dade, or online coaching from anywhere. The first 30-minute intro session is free.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -74,7 +74,7 @@ a { color: inherit; }
 .sec { padding-block: clamp(64px, 10vw, 132px); }
 .sec + .sec { border-top: 1px solid var(--line); }
 .sec h2 { margin-top: 20px; font-weight: 800; font-size: clamp(2.2rem, 6.4vw, 4.4rem); line-height: 0.98; letter-spacing: -0.02em; text-transform: uppercase; }
-.sec h2 .it { font-size: 1.08em; }
+.sec h2 .it { font-size: 1.08em; white-space: nowrap; }
 .intro { margin-top: 20px; max-width: 34em; color: var(--muted); }
 
 .premise .wrap { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); gap: 28px 40px; align-items: start; }
@@ -117,15 +117,21 @@ a { color: inherit; }
 .fit li { padding-block: 15px; border-bottom: 1px solid var(--line); }
 .fit .no li { color: var(--muted); }
 
-.price .wrap { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 36px clamp(32px, 6vw, 90px); align-items: end; }
-.amount { margin-top: 22px; font-weight: 800; font-size: clamp(4.6rem, 15vw, 10rem); line-height: 0.86; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
-.amount .it { font-size: 0.3em; letter-spacing: 0; }
+.plans { margin-top: clamp(30px, 5vw, 56px); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid var(--line); background: var(--bg2); }
+.plan { display: flex; flex-direction: column; padding: clamp(22px, 3vw, 38px); border-left: 1px solid var(--line); }
+.plan:first-child { border-left: 0; }
+.plan h3 { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
+.plan-price { margin-top: 20px; font-weight: 800; font-size: clamp(3.4rem, 6.4vw, 4.8rem); line-height: 0.9; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
+.plan-price .it { display: block; margin-top: 12px; font-size: 0.36em; line-height: 1.1; letter-spacing: 0; }
+.plan-for { margin-top: 18px; color: var(--muted); }
+.plan .incl { margin-top: 20px; flex: 1; border-top: 1px solid var(--line); }
+.plan .btn { margin-top: 28px; white-space: normal; text-align: center; }
+.plans-note { margin-top: 22px; color: var(--dim); font-size: 0.95rem; max-width: 44em; }
 .incl li { padding-block: 14px; border-bottom: 1px solid var(--line); display: flex; gap: 14px; }
 .incl li::before { content: ""; flex: none; width: 7px; height: 7px; margin-top: 0.62em; background: var(--accent); transform: rotate(45deg); }
-.incl + .btn { margin-top: 28px; }
 
-.coach p { margin-top: 24px; max-width: 36em; font-size: 1.15rem; color: var(--muted); }
-.coach p strong { color: var(--ink); }
+.coach .bio { margin-top: 24px; max-width: 36em; font-size: 1.15rem; color: var(--muted); }
+.coach .bio strong { color: var(--ink); }
 
 .faq { margin-top: clamp(28px, 4vw, 48px); border-top: 1px solid var(--line); }
 .faq details { border-bottom: 1px solid var(--line); }
@@ -138,11 +144,10 @@ a { color: inherit; }
 .book { background: var(--accent); color: var(--on-accent); }
 .book .wrap { padding-block: clamp(60px, 9vw, 120px); }
 .book h2 { font-weight: 800; font-size: clamp(2.6rem, 8.4vw, 6rem); line-height: 0.94; letter-spacing: -0.02em; text-transform: uppercase; }
-.book h2 .it { color: var(--on-accent); font-size: 1.06em; }
+.book h2 .it { color: var(--on-accent); font-size: 1.06em; white-space: nowrap; }
 .book p { margin-top: 20px; max-width: 30em; font-size: 1.15rem; font-weight: 500; }
 .book .btn { margin-top: 30px; background: var(--on-accent); color: var(--ink); }
 .book .btn:hover { background: #12203A; }
-.soon { display: inline-block; margin-top: 30px; padding: 1.05em 1.6em; border: 1px solid var(--on-accent); font-weight: 800; font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; }
 
 .foot { padding-block: 34px 48px; color: var(--dim); font-size: 0.9rem; }
 .foot p { max-width: 58em; }
@@ -156,16 +161,23 @@ a { color: inherit; }
   .facts .wrap { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .facts .wrap > div:nth-child(odd) { border-left: 0; padding-left: 0; }
   .facts .wrap > div:nth-child(n+3) { border-top: 1px solid var(--line); }
-  .premise .wrap, .row, .price .wrap { grid-template-columns: minmax(0, 1fr); }
+  .premise .wrap, .row, .plans { grid-template-columns: minmax(0, 1fr); }
+  .plan { border-left: 0; border-top: 1px solid var(--line); }
+  .plan:first-child { border-top: 0; }
   .row:nth-child(even) .row-text { order: 0; }
 }
 @media (max-width: 560px) {
   .fit { grid-template-columns: minmax(0, 1fr); }
   .quick { grid-auto-flow: row; gap: 8px; }
   .mark { font-size: 0.92rem; letter-spacing: 0.16em; }
+  .head .btn { padding-inline: 1em; letter-spacing: 0.1em; }
   .strip ul { flex-direction: column; gap: 10px; }
   .strip li { gap: 14px; }
   .strip li::before { content: ""; width: 6px; height: 6px; background: var(--accent); transform: rotate(45deg); }
+}
+@media (max-width: 400px) {
+  .mark { font-size: 0.82rem; letter-spacing: 0.12em; white-space: nowrap; }
+  .head .btn { font-size: 0.66rem; padding-inline: 0.9em; }
 }
 </style>
 </head>
@@ -177,9 +189,9 @@ a { color: inherit; }
     <nav class="nav" aria-label="Sections">
       <a href="#method">The method</a>
       <a href="#fit">Who it's for</a>
-      <a href="#price">Price</a>
+      <a href="#price">Pricing</a>
     </nav>
-    <a class="btn btn-sm" href="#book" data-book>Book a free call</a>
+    <a class="btn btn-sm" href="https://calendar.app.google/BWYzT6n4knN2wDiR7" target="_blank" rel="noopener">Free intro session</a>
   </div>
 </header>
 
@@ -187,18 +199,18 @@ a { color: inherit; }
   <section class="hero">
     <div class="wrap">
       <div>
-        <p class="tag">Online coaching for busy professionals</p>
+        <p class="tag">Personal training for busy professionals</p>
         <h1>Strength and fat loss <span class="it">on your schedule.</span></h1>
-        <p class="lede">Three lifting sessions a week, nutrition targets you can hit on a workday, and a check-in with your coach every week. <strong>No two-hour workouts. No rigid meal plans.</strong> All of it planned around your job.</p>
+        <p class="lede">Train in person at your home or building gym, anywhere in Miami-Dade, or follow a coached program online. <strong>No two-hour workouts. No rigid meal plans.</strong> All of it planned around your job.</p>
         <div class="actions">
-          <a class="btn" href="#book" data-book>Book a free call</a>
-          <a class="link" href="#method">See the method</a>
+          <a class="btn" href="https://calendar.app.google/BWYzT6n4knN2wDiR7" target="_blank" rel="noopener">Book a free intro session</a>
+          <a class="link" href="#price">See pricing</a>
         </div>
       </div>
       <ul class="quick">
-        <li><b>3</b> lifts a week</li>
-        <li><b>1</b> check-in a week</li>
-        <li><b>100%</b> online</li>
+        <li><b>In person</b> or online</li>
+        <li><b>All of</b> Miami-Dade</li>
+        <li><b>Free</b> first session</li>
       </ul>
     </div>
   </section>
@@ -208,16 +220,16 @@ a { color: inherit; }
       <div><b>3<i>x</i></b><span>Lifting sessions a week, sized to the time you have.</span></div>
       <div><b>3:40</b><span>Hours of training and check-in in the example week below.</span></div>
       <div><b>1<i>:</i>1</b><span>Your own coach reviews your week and adjusts the plan.</span></div>
-      <div><b><i>$</i>250</b><span>A month, billed month to month.</span></div>
+      <div><b><i>$</i>0</b><span>For your first session, a 30-minute intro.</span></div>
     </div>
   </section>
 
   <div class="strip">
     <ul>
-      <li>The first call is free</li>
-      <li>Gym, home or hotel</li>
-      <li>Built from foods you already eat</li>
-      <li>Month to month</li>
+      <li>The first session is free</li>
+      <li>Your home or building gym</li>
+      <li>All of Miami-Dade</li>
+      <li>Online from anywhere</li>
     </ul>
   </div>
 
@@ -232,6 +244,7 @@ a { color: inherit; }
     <div class="wrap">
       <p class="tag">The method</p>
       <h2>What you get, <span class="it">every week.</span></h2>
+      <p class="intro">The same method in person and online. In person, most of it happens at your sessions. Online, it runs through your program, your weekly check-in and messages.</p>
       <div class="rows">
 
         <div class="row">
@@ -239,7 +252,7 @@ a { color: inherit; }
             <span class="num">01</span>
             <span class="kicker">Training</span>
             <h3>A program built for your week</h3>
-            <p>Sessions sized to the time you have and the equipment you can reach, at a gym, at home or in a hotel. <strong>The program changes as you get stronger.</strong></p>
+            <p>Sessions sized to the time you have and the equipment you can reach. In person, Lance runs each session with you. Online, you follow the program and send videos. <strong>The program changes as you get stronger.</strong></p>
           </div>
           <div class="panel">
             <p class="panel-title"><span>An example week</span><span>Sample</span></p>
@@ -331,30 +344,61 @@ a { color: inherit; }
           <ul>
             <li>You want a crash diet or a 30-day transformation.</li>
             <li>You need treatment for an injury or a medical condition. See your doctor or physical therapist first.</li>
-            <li>You want in-person sessions.</li>
+            <li>You want in-person sessions outside Miami-Dade. Online coaching is the option there.</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="sec price" id="price">
+  <section class="sec" id="price">
     <div class="wrap">
-      <div>
-        <p class="tag">Price</p>
-        <p class="amount">$250 <span class="it">a month</span></p>
-        <p class="intro">One plan, billed month to month. The first call is free.</p>
+      <p class="tag">Pricing</p>
+      <h2>Three ways <span class="it">to train.</span></h2>
+      <p class="intro">Every option starts with a free 30-minute intro session. Pay by the session in person or month to month online.</p>
+      <div class="plans">
+
+        <article class="plan">
+          <h3>In person, 1 on 1</h3>
+          <p class="plan-price">$90 <span class="it">a session</span></p>
+          <p class="plan-for">You and Lance, with his full attention on your lifts.</p>
+          <ul class="incl">
+            <li>At your home or building gym, anywhere in Miami-Dade</li>
+            <li>Lance runs the session and coaches your form</li>
+            <li>A program built around your schedule and goals</li>
+            <li>Nutrition targets to follow between sessions</li>
+          </ul>
+          <a class="btn" href="https://calendar.app.google/BWYzT6n4knN2wDiR7" target="_blank" rel="noopener">Book a free intro session</a>
+        </article>
+
+        <article class="plan">
+          <h3>In person, with a partner</h3>
+          <p class="plan-price">$60 <span class="it">a person, per session</span></p>
+          <p class="plan-for">Train with a partner, a friend or a coworker.</p>
+          <ul class="incl">
+            <li>Two people, $120 a session in total</li>
+            <li>At your home or building gym, anywhere in Miami-Dade</li>
+            <li>Each of you works at your own level</li>
+            <li>Nutrition targets for both of you</li>
+          </ul>
+          <a class="btn" href="https://calendar.app.google/BWYzT6n4knN2wDiR7" target="_blank" rel="noopener">Book a free intro session</a>
+        </article>
+
+        <article class="plan">
+          <h3>Online coaching</h3>
+          <p class="plan-price">$250 <span class="it">a month</span></p>
+          <p class="plan-for">A full program you follow on your own schedule, from anywhere.</p>
+          <ul class="incl">
+            <li>Training program built around your schedule and equipment</li>
+            <li>Calorie and protein targets built from foods you already eat</li>
+            <li>A check-in every week, with changes for the week ahead</li>
+            <li>Feedback on your lift videos and messaging between check-ins</li>
+          </ul>
+          <a class="btn" href="https://calendar.app.google/BWYzT6n4knN2wDiR7" target="_blank" rel="noopener">Book a free intro session</a>
+        </article>
+
       </div>
-      <div>
-        <ul class="incl">
-          <li>Training program built around your schedule and equipment</li>
-          <li>Calorie and protein targets built from foods you already eat</li>
-          <li>A check-in every week, with changes for the week ahead</li>
-          <li>Feedback on your lift videos</li>
-          <li>Messaging between check-ins</li>
-        </ul>
-        <a class="btn" href="#book" data-book>Book a free call</a>
-      </div>
+      <p class="plans-note">No sign-up fee and no long contract. Online coaching is billed month to month.</p>
     </div>
   </section>
 
@@ -362,7 +406,7 @@ a { color: inherit; }
     <div class="wrap">
       <p class="tag">Your coach</p>
       <h2>Coached by <span class="it">Lance Marxen.</span></h2>
-      <p>Lance coaches the way he trains: <strong>strength work you can recover from, eating you can keep up,</strong> and a weekly review that catches small problems early.</p>
+      <p class="bio">Lance coaches the way he trains: <strong>strength work you can recover from, eating you can keep up,</strong> and a weekly review that catches small problems early. He trains clients in person across Miami-Dade and online everywhere else.</p>
     </div>
   </section>
 
@@ -372,8 +416,16 @@ a { color: inherit; }
       <h2>Before you <span class="it">book.</span></h2>
       <div class="faq">
         <details>
+          <summary>What happens in the free intro session?</summary>
+          <p>Thirty minutes with Lance, by video or in person in Miami-Dade. You go over your schedule, your training history and your goals, and you leave with a starting plan. There is no charge and no obligation to continue.</p>
+        </details>
+        <details>
+          <summary>Where do in-person sessions happen?</summary>
+          <p>At your home or in your building's gym, anywhere in Miami-Dade. Tell Lance what equipment you have and the sessions are planned around it. Some buildings ask outside trainers to register first, so check with your front desk.</p>
+        </details>
+        <details>
           <summary>Do I need a gym membership?</summary>
-          <p>No. A gym gives you the most options, but a home setup with dumbbells or a barbell works, and so does a hotel gym when you travel. Your program is written for the equipment you have.</p>
+          <p>No. In-person sessions use your home setup or your building's gym. Online, a gym gives you the most options, but a home setup with dumbbells or a barbell works, and so does a hotel gym when you travel. Your program is written for the equipment you have.</p>
         </details>
         <details>
           <summary>How much time does it take?</summary>
@@ -401,40 +453,19 @@ a { color: inherit; }
 
   <section class="book" id="book">
     <div class="wrap">
-      <h2>Book a <span class="it">free call.</span></h2>
-      <p>Fifteen minutes to talk through your schedule and goals and see whether coaching fits.</p>
-      <a class="btn" id="book-link" href="#book" target="_blank" rel="noopener" hidden>Book a free call</a>
-      <span class="soon" id="book-soon">Online booking opens soon</span>
+      <h2>Your first session <span class="it">is free.</span></h2>
+      <p>Thirty minutes, by video or in person in Miami-Dade, to go over your schedule and goals and map out a starting plan. Pick a weekday evening or a weekend morning.</p>
+      <a class="btn" href="https://calendar.app.google/BWYzT6n4knN2wDiR7" target="_blank" rel="noopener">Book a free intro session</a>
     </div>
   </section>
 </main>
 
 <footer class="foot">
   <div class="wrap">
-    <p>&copy; 2026 Marxen Fitness.</p>
+    <p>&copy; 2026 Marxen Fitness. In person in Miami-Dade County, Florida, and online.</p>
     <p>Marxen Fitness provides general fitness and nutrition coaching. It is not medical advice. Lance Marxen is not a licensed dietitian or nutritionist. Panels marked example or sample are illustrations, not client results.</p>
   </div>
 </footer>
 
-<script>
-  // Paste the scheduling link between the quotes (for example a Calendly link).
-  // While it is empty, every "Book a free call" button scrolls to the booking section,
-  // which says that online booking opens soon.
-  var BOOKING_URL = "";
-
-  (function () {
-    if (!BOOKING_URL) return;
-    var link = document.getElementById("book-link");
-    link.href = BOOKING_URL;
-    link.hidden = false;
-    document.getElementById("book-soon").hidden = true;
-    var buttons = document.querySelectorAll("[data-book]");
-    for (var i = 0; i < buttons.length; i++) {
-      buttons[i].href = BOOKING_URL;
-      buttons[i].target = "_blank";
-      buttons[i].rel = "noopener";
-    }
-  })();
-</script>
 </body>
 </html>
