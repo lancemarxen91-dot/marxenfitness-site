@@ -146,8 +146,10 @@ a { color: inherit; }
 .book h2 { font-weight: 800; font-size: clamp(2.6rem, 8.4vw, 6rem); line-height: 0.94; letter-spacing: -0.02em; text-transform: uppercase; }
 .book h2 .it { color: var(--on-accent); font-size: 1.06em; white-space: nowrap; }
 .book p { margin-top: 20px; max-width: 30em; font-size: 1.15rem; font-weight: 500; }
-.book .btn { margin-top: 30px; background: var(--on-accent); color: var(--ink); }
+.book-actions { margin-top: 30px; display: flex; flex-wrap: wrap; align-items: center; gap: 20px 30px; }
+.book .btn { background: var(--on-accent); color: var(--ink); }
 .book .btn:hover { background: #12203A; }
+.book .link { border-color: var(--on-accent); }
 
 .foot { padding-block: 34px 48px; color: var(--dim); font-size: 0.9rem; }
 .foot p { max-width: 58em; }
@@ -190,6 +192,7 @@ a { color: inherit; }
       <a href="#method">The method</a>
       <a href="#fit">Who it's for</a>
       <a href="#price">Pricing</a>
+      <a href="/contact.html">Contact</a>
     </nav>
     <a class="btn btn-sm" href="https://calendar.app.google/BWYzT6n4knN2wDiR7" target="_blank" rel="noopener">Free intro session</a>
   </div>
@@ -406,7 +409,7 @@ a { color: inherit; }
     <div class="wrap">
       <p class="tag">Your coach</p>
       <h2>Coached by <span class="it">Lance Marxen.</span></h2>
-      <p class="bio">Lance coaches the way he trains: <strong>strength work you can recover from, eating you can keep up,</strong> and a weekly review that catches small problems early. He trains clients in person across Miami-Dade and online everywhere else.</p>
+      <p class="bio">Lance earned his first personal training certification at 19, <strong>14 years ago.</strong> He coaches the way he trains: <strong>strength work you can recover from, eating you can keep up,</strong> and a weekly review that catches small problems early. He trains clients in person across Miami-Dade and online everywhere else.</p>
     </div>
   </section>
 
@@ -455,14 +458,17 @@ a { color: inherit; }
     <div class="wrap">
       <h2>Your first session <span class="it">is free.</span></h2>
       <p>Thirty minutes, by video or in person in Miami-Dade, to go over your schedule and goals and map out a starting plan. Pick a weekday evening or a weekend morning.</p>
-      <a class="btn" href="https://calendar.app.google/BWYzT6n4knN2wDiR7" target="_blank" rel="noopener">Book a free intro session</a>
+      <div class="book-actions">
+        <a class="btn" href="https://calendar.app.google/BWYzT6n4knN2wDiR7" target="_blank" rel="noopener">Book a free intro session</a>
+        <a class="link" href="/contact.html">Or send a message</a>
+      </div>
     </div>
   </section>
 </main>
 
 <footer class="foot">
   <div class="wrap">
-    <p>&copy; 2026 Marxen Fitness. In person in Miami-Dade County, Florida, and online.</p>
+    <p>&copy; 2026 Marxen Fitness. In person in Miami-Dade County, Florida, and online. <a href="/contact.html">Contact</a></p>
     <p>Marxen Fitness provides general fitness and nutrition coaching. It is not medical advice. Lance Marxen is not a licensed dietitian or nutritionist. Panels marked example or sample are illustrations, not client results.</p>
   </div>
 </footer>
